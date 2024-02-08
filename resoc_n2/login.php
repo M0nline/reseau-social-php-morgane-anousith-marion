@@ -52,7 +52,7 @@ session_start();
                     $res = $mysqli->query($lInstructionSql);
                     $user = $res->fetch_assoc();
                     if (!$user or $user["password"] != $passwdAVerifier) {
-                        echo "La connexion a échouée. ";
+                        echo "La connexion a échoué. ";
                     } else {
                         echo "Votre connexion est un succès : " . $user['alias'] . ".";
                         // Se souvenir que l'utilisateur s'est connecté pour la suite
