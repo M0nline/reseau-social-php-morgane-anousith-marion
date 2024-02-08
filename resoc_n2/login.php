@@ -58,7 +58,9 @@ session_start();
                         // Se souvenir que l'utilisateur s'est connecté pour la suite
                         // documentation: https://www.php.net/manual/fr/session.examples.basic.php
                         $_SESSION['connected_id'] = $user['id'];
+                        header("Location: http://localhost/reseau-social-php-morgane-anousith-marion/resoc_n2/news.php");
                     }
+                    exit;
                 }
                 ?>
                 <form action="login.php" method="post">
