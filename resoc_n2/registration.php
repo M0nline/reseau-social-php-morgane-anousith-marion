@@ -40,23 +40,41 @@
                     // on crypte le mot de passe pour éviter d'exposer notre utilisatrice en cas d'intrusion dans nos systèmes
                     $new_passwd = md5($new_passwd);
                     // NB: md5 est pédagogique mais n'est pas recommandé pour une vraie sécurité
-                    // construction de la requete
-                    $lInstructionSql = "INSERT INTO users (id, email, password, alias) "
-                        . "VALUES (NULL, "
-                        . "'" . $new_email . "', "
-                        . "'" . $new_passwd . "', "
-                        . "'" . $new_alias . "'"
-                        . ");";
-                    // exécution de la requete
-                    $ok = $mysqli->query($lInstructionSql);
-                    if (!$ok) {
-                        echo "L'inscription a échoué : " . $mysqli->error;
+                    // Vérifie si le nom d'utilisateur existe déjà dans la DB 
+                    $aliasVerification = "SELECT COUNT(*) AS count WHERE alias = '$new_alias'";
+                    $aliasVerificationResult = $msqli->query($aliasVerification);
+                    if (!$aliasVerificationResult) {
+                        echo "Une erreur est survenue lors de la vérification de l'alias"
                     } else {
-                        echo "Votre inscription est un succès : " . $new_alias . " !";
-                        echo " <a href='login.php'>Cliquez ici pour vous connecter.</a>";
+                        $row = $aliasVerificationResult->fetch_assoc();
+                        if($row["count"] > 0) {
+                            echo "Le nom d'utilisateur '$new_alias' est déjà pris"
+                        } else {
+                            // Faire la registration : 
+                            // construction de la requete
+                            $lInstructionSql = "INSERT INTO users (id, email, password, alias) "
+                                . "VALUES (NULL, "
+                                . "'" . $new_email . "', "
+                                . "'" . $new_passwd . "', "
+                                . "'" . $new_alias . "'"
+                                . ");";
+                            // exécution de la requete
+                            $ok = $mysqli->query($lInstructionSql);
+                            if (!$ok) {
+                                echo "L'inscription a échoué : " . $mysqli->error;
+                            } else {
+                                echo "Votre inscription est un succès : " . $new_alias . " !";
+                                // ouvre directement une session après la registration
+                                $_SESSION['connected_id'] = $user['id'];
+                                // redirige l'utilisateur vers news.php
+                                header("Location: http://localhost/reseau-social-php-morgane-anousith-marion/resoc_n2/news.php");
+                            }
+                            exit;
+                        }
                     }
                 }
                 ?>
+
                 <form action="registration.php" method="post">
                     <input type="hidden" name="action" value="registration">
                     <fieldset>
