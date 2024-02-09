@@ -41,14 +41,14 @@
                     $new_passwd = md5($new_passwd);
                     // NB: md5 est pédagogique mais n'est pas recommandé pour une vraie sécurité
                     // Vérifie si le nom d'utilisateur existe déjà dans la DB 
-                    $aliasVerification = "SELECT COUNT(*) AS count WHERE alias = '$new_alias'";
-                    $aliasVerificationResult = $msqli->query($aliasVerification);
+                    $aliasVerification = "SELECT COUNT(*) AS count FROM users WHERE alias = '$new_alias'";
+                    $aliasVerificationResult = $mysqli->query($aliasVerification);
                     if (!$aliasVerificationResult) {
-                        echo "Une erreur est survenue lors de la vérification de l'alias"
+                        echo "Une erreur est survenue lors de la vérification de l'alias:" . $mysqli->error;
                     } else {
                         $row = $aliasVerificationResult->fetch_assoc();
                         if($row["count"] > 0) {
-                            echo "Le nom d'utilisateur '$new_alias' est déjà pris"
+                            echo "Le nom d'utilisateur '$new_alias' est déjà pris";
                         } else {
                             // Faire la registration : 
                             // construction de la requete
