@@ -1,7 +1,7 @@
 <?php
 while ($post = $lesInformations->fetch_assoc()) {
     // test réponse
-    echo "<pre>" . print_r($post, 1) . "</pre>";
+    // echo "<pre>" . print_r($post, 1) . "</pre>";
 ?>
     <article>
         <h3>
@@ -27,7 +27,7 @@ while ($post = $lesInformations->fetch_assoc()) {
                         if ($tagString !== '') {
                             $tagString .= ', ';
                         }
-                        $tagString .= '<a href="tags.php?tag_id=' . urlencode(trim($post['tag_ids'])) . '">' . trim($tag) . '</a>';
+                        $tagString .= '<a href="tags.php?tag_id=' . urlencode(trim($post['tag_ids'])) . '">#' . trim($tag) . '</a>';
                     // Ajout du tag avec une virgule (sauf pour le premier tag)
                     // Affichage de la chaîne de tags complète
                     echo $tagString;

@@ -34,16 +34,21 @@ session_start();
             <section>
                 <h3>Mur</h3>
                 <p>Sur cette page, vous trouverez tous les messages de l'utilisatrice (n° <?php echo $userId ?>) <?php echo $user['alias'] ?>.</p>
+            <?php 
+                $test = $_SESSION['connected_id'];
+                echo "<pre>" . print_r($test, 1) . "</pre>";
+                // on vérifie que le user est connecté ET que c'est son wall
+                 if (isset($_SESSION['connected_id']) && $_GET['user_id'] == $_SESSION['connected_id']) {
+                include('scripts/post.php');
+                }
+            ?>
             </section>
         </aside>
 
         <!-- liste de posts -->
         <main>
             <?php
-            // on vérifie que le user est connecté ET que c'est son wall
-            if (isset($_SESSION['connected_id']) && isset($_GET['user_id']) && $_GET['user_id'] == $_SESSION['connected_id']) {
-                include('scripts/post.php');
-            }
+           
             $laQuestionEnSql = "
                     SELECT  posts.content, 
                             posts.created, 
@@ -62,7 +67,7 @@ session_start();
                     ORDER BY posts.created DESC  
                     ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
-            include('rq_error.php');
+            include('scripts/rq_error.php');
             include('scripts/get_posts.php');
             ?>
         </main>
