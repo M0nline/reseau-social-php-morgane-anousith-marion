@@ -1,6 +1,5 @@
 <?php
-session_start();
-require('scripts/db_connect.php');
+    require('db_connect.php');
 ?>
 
 <article>

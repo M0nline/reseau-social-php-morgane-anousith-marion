@@ -1,3 +1,11 @@
+<?php
+require('scripts/db_connect.php');
+// Vérifiez si une session n'est pas déjà active avant de démarrer une nouvelle session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -10,7 +18,7 @@
 
 <body>
     <header>
-        <?php include('scripts/header.php'); ?>
+        <?php include_once('scripts/header.php'); ?>
     </header>
 
     <div id="wrapper">
@@ -32,7 +40,6 @@
                     $new_email = $_POST['email'];
                     $new_alias = $_POST['pseudo'];
                     $new_passwd = $_POST['motpasse'];
-                    require('scripts/db_connect.php');
                     // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
                     $new_email = $mysqli->real_escape_string($new_email);
                     $new_alias = $mysqli->real_escape_string($new_alias);

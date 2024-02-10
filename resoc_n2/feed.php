@@ -1,3 +1,11 @@
+<?php
+require('scripts/db_connect.php');
+// Vérifiez si une session n'est pas déjà active avant de démarrer une nouvelle session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -10,12 +18,13 @@
 
 <body>
     <header>
-        <?php include('scripts/header.php'); ?>
+        <?php include_once('scripts/header.php'); ?>
     </header>
     <div id="wrapper">
         <?php
-        $userId = intval($_GET['user_id']);
-        require('scripts/db_connect.php'); ?>
+        // $userId = intval($_GET['user_id']);
+        $userId = $_SESSION['connected_id']
+         ?>
 
         <aside>
             <?php
@@ -55,8 +64,8 @@
                 ORDER BY posts.created DESC  
                 ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
-            include('rq_error.php');
-            include ('scripts/get_posts.php'); 
+            include_once('scripts/rq_error.php');
+            include_once('scripts/get_posts.php'); 
             ?>
         </main>
     </div>

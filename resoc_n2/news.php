@@ -1,3 +1,11 @@
+<?php
+require('scripts/db_connect.php');
+// Vérifiez si une session n'est pas déjà active avant de démarrer une nouvelle session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -10,21 +18,18 @@
 
 <body>
     <header>
-        <?php include('scripts/header.php'); ?>
+        <?php include_once('scripts/header.php'); ?>
     </header>
     <div id="wrapper">
         <aside>
             <img src="img/user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Actualités</h3>
-                <p>Sur cette page vous trouverez les 5 derniers messages de
-                    tous les utilisatrices du site.</p>
+                <p>Sur cette page, vous trouverez les 5 derniers messages publiés sur le site.</p>
             </section>
         </aside>
         <main>
-            <?php require('scripts/db_connect.php');
-
-            $laQuestionEnSql = "
+            <?php $laQuestionEnSql = "
                     SELECT  posts.content,
                             posts.created,
                             posts.user_id as author_id,  
@@ -49,7 +54,7 @@
                 echo ("<p>Indice: Vérifiez la requete  SQL suivante dans phpmyadmin<code>$laQuestionEnSql</code></p>");
                 exit();
             }
-            include('scripts/get_posts.php');
+            include_once('scripts/get_posts.php');
             ?>
         </main>
     </div>

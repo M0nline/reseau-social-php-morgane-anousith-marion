@@ -1,6 +1,11 @@
 <?php
-session_start();
+require('scripts/db_connect.php');
+// Vérifiez si une session n'est pas déjà active avant de démarrer une nouvelle session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -27,7 +32,6 @@ session_start();
             <article>
                 <h2>Poster un message</h2>
                 <?php
-                require('scripts/db_connect.php');
                 // récupération auteurs
                 $listAuteurs = [];
                 $laQuestionEnSql = "SELECT * FROM users";

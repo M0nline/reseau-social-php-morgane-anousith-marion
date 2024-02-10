@@ -1,3 +1,11 @@
+<?php
+require('scripts/db_connect.php');
+// Vérifiez si une session n'est pas déjà active avant de démarrer une nouvelle session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -10,10 +18,9 @@
 
 <body>
     <header>
-        <?php include('scripts/header.php'); ?>
+        <?php include_once('scripts/header.php'); ?>
     </header>
 
-    <?php require('scripts/db_connect.php'); ?>
     <div id="wrapper" class='admin'>
         <aside>
             <h2>Mots-clés</h2>
@@ -38,7 +45,7 @@
             <?php
             $laQuestionEnSql = "SELECT * FROM `users` LIMIT 50";
             $lesInformations = $mysqli->query($laQuestionEnSql);
-            include('scripts/rq_error.php');
+            include_once('scripts/rq_error.php');
             while ($user = $lesInformations->fetch_assoc()) {
             ?>
                 <article>

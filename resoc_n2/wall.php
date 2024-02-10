@@ -1,5 +1,9 @@
 <?php
-session_start();
+require('scripts/db_connect.php');
+// Vérifiez si une session n'est pas déjà active avant de démarrer une nouvelle session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <!doctype html>
@@ -14,13 +18,11 @@ session_start();
 
 <body>
     <header>
-        <?php include('scripts/header.php'); ?>
-
+        <?php include_once('scripts/header.php'); ?>
     </header>
     <div id="wrapper">
         <?php
         $userId = intval($_GET['user_id']);
-        require('scripts/db_connect.php');
         ?>
         <!-- fiche profil -->
         <aside>
@@ -34,21 +36,21 @@ session_start();
             <section>
                 <h3>Mur</h3>
                 <p>Sur cette page, vous trouverez tous les messages de l'utilisatrice (n° <?php echo $userId ?>) <?php echo $user['alias'] ?>.</p>
-            <?php 
+                <?php
                 $test = $_SESSION['connected_id'];
                 echo "<pre>" . print_r($test, 1) . "</pre>";
                 // on vérifie que le user est connecté ET que c'est son wall
-                 if (isset($_SESSION['connected_id']) && $_GET['user_id'] == $_SESSION['connected_id']) {
-                include('scripts/post.php');
+                if (isset($_SESSION['connected_id']) && $_GET['user_id'] == $_SESSION['connected_id']) {
+                    include_once('scripts/post.php');
                 }
-            ?>
+                ?>
             </section>
         </aside>
 
         <!-- liste de posts -->
         <main>
             <?php
-           
+
             $laQuestionEnSql = "
                     SELECT  posts.content, 
                             posts.created, 
@@ -67,8 +69,8 @@ session_start();
                     ORDER BY posts.created DESC  
                     ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
-            include('scripts/rq_error.php');
-            include('scripts/get_posts.php');
+            include_once('scripts/rq_error.php');
+            include_once('scripts/get_posts.php');
             ?>
         </main>
     </div>

@@ -5,7 +5,7 @@ while ($post = $lesInformations->fetch_assoc()) {
 ?>
     <article>
         <h3>
-            <?php include('scripts/timestamp.php') ?>
+            <?php include_once('scripts/timestamp.php') ?>
         </h3>
 
         <address>par <a href="wall.php?user_id=<?php echo $post['author_id']; ?>"><?php echo $post['author_name'] ?></a></address>

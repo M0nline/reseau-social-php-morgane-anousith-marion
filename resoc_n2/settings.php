@@ -1,3 +1,11 @@
+<?php
+require('scripts/db_connect.php');
+// Vérifiez si une session n'est pas déjà active avant de démarrer une nouvelle session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!doctype html>
 <html lang="fr">
     <head>
@@ -8,7 +16,7 @@
     </head>
     <body>
         <header>
-        <?php include('scripts/header.php'); ?>
+        <?php include_once('scripts/header.php'); ?>
 
         </header>
         <div id="wrapper" class='profile'>
@@ -27,7 +35,6 @@
                 <?php
                 // on récupère l'id 
                 $userId = intval($_GET['user_id']);
-                require('scripts/db_connect.php'); 
                 $laQuestionEnSql = "
                     SELECT users.*, 
                         count(DISTINCT posts.id) as totalpost, 
@@ -41,7 +48,7 @@
                     GROUP BY users.id
                     ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
-                include('rq_error.php');
+                include_once('scripts/rq_error.php');
                 $user = $lesInformations->fetch_assoc();
 
                         ?>                

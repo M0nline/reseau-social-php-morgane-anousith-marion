@@ -1,3 +1,11 @@
+<?php
+require('scripts/db_connect.php');
+// Vérifiez si une session n'est pas déjà active avant de démarrer une nouvelle session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -10,7 +18,7 @@
 
 <body>
     <header>
-        <?php include('scripts/header.php'); ?>
+        <?php include_once('scripts/header.php'); ?>
 
     </header>
     <div id="wrapper">
@@ -29,7 +37,6 @@
         <main class='contacts'>
             <?php
             $userId = intval($_GET['user_id']);
-            require('scripts/db_connect.php');
             $laQuestionEnSql = "
                     SELECT users.* 
                     FROM followers 
@@ -38,7 +45,7 @@
                     GROUP BY users.id
                     ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
-            include ('scripts/get_users.php'); 
+            include_once('scripts/get_users.php'); 
             ?>
         </main>
     </div>
