@@ -37,8 +37,8 @@ if (session_status() === PHP_SESSION_NONE) {
                 <h3>Mur</h3>
                 <p>Sur cette page, vous trouverez tous les messages de l'utilisatrice (n° <?php echo $userId ?>) <?php echo $user['alias'] ?>.</p>
                 <?php
-                $test = $_SESSION['connected_id'];
-                echo "<pre>" . print_r($test, 1) . "</pre>";
+                // $test = $_SESSION['connected_id'];
+                // echo "<pre>" . print_r($test, 1) . "</pre>";
                 // on vérifie que le user est connecté ET que c'est son wall
                 if (isset($_SESSION['connected_id']) && $_GET['user_id'] == $_SESSION['connected_id']) {
                     include_once('scripts/post.php');
