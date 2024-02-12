@@ -31,6 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Fermer la déclaration et la connexion à la base de données
             $statement->close();
             $mysqli->close();
+            header("Location: ".$_SERVER['HTTP_REFERER']);
+
         } else {
             echo "Erreur : Toutes les données requises n'ont pas été envoyées depuis le formulaire.";
         }
