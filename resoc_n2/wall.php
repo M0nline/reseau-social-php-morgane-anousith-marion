@@ -51,8 +51,9 @@ include_once('scripts/redir.php')
                             <button type="submit" class="btn-submit">Je m'abonne aux publications de <?php echo $user['alias'] ?></button>
                         </form>
                 <?php
+                    } else {
+                        include_once('scripts/post.php');
                     }
-                    include_once('scripts/post.php');
                 }
                 ?>
             </section>
