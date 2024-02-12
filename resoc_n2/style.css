@@ -88,9 +88,9 @@ body>header #user:hover ul{
 
 #wrapper main{
     flex:3;
-    padding-left:1em;
+    padding:0 1em 0 1em;
     height: 80vh;
-    overflow-y:  scroll;
+    /* overflow-y:  scroll; */
 }
 #wrapper main article{
     background-color: #fff;
