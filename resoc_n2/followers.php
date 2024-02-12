@@ -4,6 +4,7 @@ require('scripts/db_connect.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+include_once('scripts/redir.php')
 ?>
 
 <!doctype html>
