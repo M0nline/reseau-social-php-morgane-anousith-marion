@@ -40,8 +40,6 @@ if (session_status() === PHP_SESSION_NONE) {
                     echo "<pre>" . print_r($_POST, 1) . "</pre>";
                     $emailAVerifier = $_POST['email'];
                     $passwdAVerifier = $_POST['motpasse'];
-                    //on ouvre une connexion avec la base de donnée.
-                    // require('scripts/db_connect.php');
                     // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
                     $emailAVerifier = $mysqli->real_escape_string($emailAVerifier);
                     $passwdAVerifier = $mysqli->real_escape_string($passwdAVerifier);

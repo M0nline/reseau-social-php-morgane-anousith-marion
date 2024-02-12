@@ -52,6 +52,7 @@ include_once('scripts/redir.php')
                         </form>
                 <?php
                     }
+                    include_once('scripts/post.php');
                 }
                 ?>
             </section>
