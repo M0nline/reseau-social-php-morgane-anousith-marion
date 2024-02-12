@@ -38,16 +38,20 @@ include_once('scripts/redir.php')
                 <h3>Mur</h3>
                 <p>Sur cette page, vous trouverez tous les messages de l'utilisatrice (n° <?php echo $userId ?>) <?php echo $user['alias'] ?>.</p>
                 <?php
-                // on vérifie que le user est connecté ET que c'est son wall
-                if (isset($_SESSION['connected_id']) && $_GET['user_id'] == $_SESSION['connected_id']) {
-                    // on affiche le form d'ajout de message
-                    include_once('scripts/post.php');
-                } else if (isset($_SESSION['connected_id']) && $_GET['user_id'] !== $_SESSION['connected_id']) {
-                    // on vérifie que le user est connecté et que ça n'est PAS son wall
-                    // on affiche un bouton d'abonnement
+                // Vérifier si l'utilisateur est connecté
+                if (isset($_SESSION['connected_id'])) {
+                    // Vérifier si l'utilisateur consulte son propre mur
+                    $isOwnWall = ($_GET['user_id'] == $_SESSION['connected_id']);
+                    if (!$isOwnWall) {
+                        // Si ce n'est pas son propre mur, afficher le bouton d'abonnement
                 ?>
-                    <button id="subscribe-btn" class="btn-submit">Je m'abonne aux publications de <?php echo $user['alias'] ?></button>
+                        <form action='scripts/follow.php' method="post">
+                            <!-- Ajoutez ici les données supplémentaires nécessaires pour le script d'abonnement -->
+                            <input type="hidden" name="user_id_to_follow" value="<?php echo $userId; ?>">
+                            <button type="submit" class="btn-submit">Je m'abonne aux publications de <?php echo $user['alias'] ?></button>
+                        </form>
                 <?php
+                    }
                 }
                 ?>
             </section>
