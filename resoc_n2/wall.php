@@ -37,11 +37,19 @@ include_once('scripts/redir.php')
             <section>
                 <h3>Mur</h3>
                 <p>Sur cette page, vous trouverez tous les messages de l'utilisatrice (n° <?php echo $userId ?>) <?php echo $user['alias'] ?>.</p>
-           
-            <?php
-                require('scripts/post.php');
-            ?>
-
+                <?php
+                // on vérifie que le user est connecté ET que c'est son wall
+                if (isset($_SESSION['connected_id']) && $_GET['user_id'] == $_SESSION['connected_id']) {
+                    // on affiche le form d'ajout de message
+                    include_once('scripts/post.php');
+                } else if (isset($_SESSION['connected_id']) && $_GET['user_id'] !== $_SESSION['connected_id']) {
+                    // on vérifie que le user est connecté et que ça n'est PAS son wall
+                    // on affiche un bouton d'abonnement
+                ?>
+                    <button id="subscribe-btn" class="btn-submit">Je m'abonne aux publications de <?php echo $user['alias'] ?></button>
+                <?php
+                }
+                ?>
             </section>
         </aside>
         <!-- liste de posts -->

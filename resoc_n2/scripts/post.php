@@ -1,10 +1,6 @@
 <?php
 // $test = $_SESSION['connected_id'];
 // echo "<pre>" . print_r($test, 1) . "</pre>";
-
-// on vérifie que le user est connecté ET que c'est son wall
-// POUR créer un formulaire de message associé à cet utilisateur. 
-if (isset($_SESSION['connected_id']) && $_GET['user_id'] == $_SESSION['connected_id']) {
 ?>
     <article>
         <h3>Poster un message</h3>
@@ -49,7 +45,3 @@ if (isset($_SESSION['connected_id']) && $_GET['user_id'] == $_SESSION['connected
             <button type="submit" class="btn-submit">Envoyer</button>
         </form>
     </article>
-<?php
-    // fin du if pour le message post
-}
-?>
