@@ -47,6 +47,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php
             $laQuestionEnSql = "
                 SELECT  posts.content,
+                        posts.id as post_id,
                         posts.created,
                         posts.user_id as author_id,  
                         users.alias as author_name,  

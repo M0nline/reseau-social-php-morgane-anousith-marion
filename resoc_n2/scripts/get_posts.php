@@ -1,8 +1,10 @@
 <?php
+
 while ($post = $lesInformations->fetch_assoc()) {
     // test réponse
     // echo "<pre>" . print_r($post, 1) . "</pre>";
 ?>
+
     <article>
         <h3>
             <?php include_once('scripts/timestamp.php') ?>
@@ -13,7 +15,11 @@ while ($post = $lesInformations->fetch_assoc()) {
             <p><?php echo $post['content']; ?></p>
         </div>
         <footer>
-            <small>♥ <?php echo $post['like_number']; ?> </small>
+        <form id="likeForm" action="scripts/add_like.php" method="POST">
+            <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
+            <input type="hidden" name="user_id" value="<?php echo $_SESSION["connected_id"]; ?>">
+            <small><button type="submit" name="likeButton">♥ <?php echo $post['like_number']; ?></button></small>
+        </form>
             <!-- gestion des tags  -->
             <?php
             // Séparation des tags en utilisant la virgule comme délimiteur
@@ -36,6 +42,7 @@ while ($post = $lesInformations->fetch_assoc()) {
             ?>
         </footer>
     </article>
+
 <?php
 } 
 ?>
