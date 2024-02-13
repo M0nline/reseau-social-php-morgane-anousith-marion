@@ -15,11 +15,26 @@ while ($post = $lesInformations->fetch_assoc()) {
             <p><?php echo $post['content']; ?></p>
         </div>
         <footer>
+
+        <!-- Here, handle the display of like based on if in $_SESSION["connected_id"] or not-->
+        <?php
+            if (isset($_SESSION["connected_id"])) {
+        ?>
+        <!-- Like button + number of like in txt -->
         <form id="likeForm" action="scripts/add_like.php" method="POST">
             <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
             <input type="hidden" name="user_id" value="<?php echo $_SESSION["connected_id"]; ?>">
-            <small><button type="submit" name="likeButton">♥ <?php echo $post['like_number']; ?></button></small>
+            <small><button id="heart" type="submit" name="likeButton"> + ♥</button> <?php echo $post['like_number']; ?> </small>
         </form>
+        <?php
+        } else {
+        ?>
+        <!-- heart + number of like in txt -->
+        <li id="likeNum" > ♥ <?php echo $post['like_number']; ?> </li>
+        <?php
+        } // end of if/else $_SESSION["connected_id"]
+        ?>
+
             <!-- gestion des tags  -->
             <?php
             // Séparation des tags en utilisant la virgule comme délimiteur
