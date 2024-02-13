@@ -12,7 +12,7 @@ while ($post = $lesInformations->fetch_assoc()) {
 
         <address>par <a href="wall.php?user_id=<?php echo $post['author_id']; ?>"><?php echo $post['author_name'] ?></a></address>
         <div>
-            <p><?php echo $post['content']; ?></p>
+        <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
         </div>
         <footer>
 
