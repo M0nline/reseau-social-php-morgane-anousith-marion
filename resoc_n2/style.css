@@ -123,7 +123,9 @@ body > header #user:hover ul {
 #wrapper main article p {
   margin: 0;
 }
+
 #wrapper main article footer {
+  position: relative;
   margin-top: 1em;
   text-align: right;
 }
@@ -131,8 +133,19 @@ body > header #user:hover ul {
   float: left;
 }
 
+#likeNum {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  list-style: none;
+}
+
 small {
-  font-size: 20px;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+}
+
+#heart {
   color: red;
 }
 

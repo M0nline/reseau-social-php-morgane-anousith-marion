@@ -64,7 +64,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
             include_once('scripts/rq_error.php');
-            include_once('scripts/get_posts.php');
+            include('scripts/get_posts.php');
             ?>
         </main>
     </div>
