@@ -57,11 +57,15 @@ include_once('scripts/redir.php')
                                 <input type="hidden" name="user_id_to_follow" value="<?php echo $userId; ?>">
                                 <button type="submit" class="btn-submit">Je m'abonne aux publications de <?php echo $user['alias'] ?></button>
                             </form>
-                <?php
+                        <?php
                         } else {
-                            // afficher un message
-                            echo "Vous suivez déjà les publications de " . $user['alias'];
-                        }
+                        ?>
+                            <!-- //afficher le bouton de désabonnement -->
+                            <form action='scripts/unfollow.php' method="post">
+                                <input type="hidden" name="user_id_to_unfollow" value="<?php echo $userId; ?>">
+                                <button type="submit" class="btn-submit">Je me désabonne des publications de <?php echo $user['alias'] ?></button>
+                            </form>
+                <?php }
                     } else {
                         // Sinon, afficher le bouton de post de message
                         include_once('scripts/post.php');
