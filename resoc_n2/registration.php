@@ -54,7 +54,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         echo "Une erreur est survenue lors de la vérification de l'alias:" . $mysqli->error;
                     } else {
                         $row = $aliasVerificationResult->fetch_assoc();
-                        if($row["count"] > 0) {
+                        if ($row["count"] > 0) {
                             echo "Le nom d'utilisateur '$new_alias' est déjà pris";
                         } else {
                             // Faire la registration : 
@@ -97,6 +97,10 @@ if (session_status() === PHP_SESSION_NONE) {
                     </fieldset>
                     <input type="submit" value="S'inscrire">
                 </form>
+                <p>
+                    Déjà inscrit-e ?
+                    <a href='login.php'>Connectez-vous.</a>
+                </p>
             </article>
         </main>
     </div>

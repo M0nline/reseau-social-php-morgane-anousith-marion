@@ -4,6 +4,7 @@ require('scripts/db_connect.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+include_once('scripts/redir.php')
 ?>
 
 <!doctype html>
@@ -37,7 +38,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <img src="img/user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Flux</h3>
-                <p>Sur cette page, vous trouverez tous les message des utilisatrices
+                <p>Sur cette page, vous trouverez tous les messages des utilisatrices
                     auxquelles est abonnée l'utilisatrice <?php echo $user['alias'] ?>
                     (n° <?php echo $userId ?>).
                 </p>

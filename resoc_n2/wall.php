@@ -4,6 +4,7 @@ require('scripts/db_connect.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+include_once('scripts/redir.php')
 ?>
 
 <!doctype html>
@@ -36,11 +37,25 @@ if (session_status() === PHP_SESSION_NONE) {
             <section>
                 <h3>Mur</h3>
                 <p>Sur cette page, vous trouverez tous les messages de l'utilisatrice (n° <?php echo $userId ?>) <?php echo $user['alias'] ?>.</p>
-           
-            <?php
-                require('scripts/post.php');
-            ?>
-
+                <?php
+                // Vérifier si l'utilisateur est connecté
+                if (isset($_SESSION['connected_id'])) {
+                    // Vérifier si l'utilisateur consulte son propre mur
+                    $isOwnWall = ($_GET['user_id'] == $_SESSION['connected_id']);
+                    if (!$isOwnWall) {
+                        // Si ce n'est pas son propre mur, afficher le bouton d'abonnement
+                ?>
+                        <form action='scripts/follow.php' method="post">
+                            <!-- Ajoutez ici les données supplémentaires nécessaires pour le script d'abonnement -->
+                            <input type="hidden" name="user_id_to_follow" value="<?php echo $userId; ?>">
+                            <button type="submit" class="btn-submit">Je m'abonne aux publications de <?php echo $user['alias'] ?></button>
+                        </form>
+                <?php
+                    } else {
+                        include_once('scripts/post.php');
+                    }
+                }
+                ?>
             </section>
         </aside>
         <!-- liste de posts -->

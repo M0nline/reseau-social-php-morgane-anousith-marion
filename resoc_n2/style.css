@@ -76,6 +76,13 @@ body > header #user:hover ul {
   width: 80em;
   margin: 0 auto 2em auto;
 }
+
+#wrapper main {
+  flex: 3;
+  padding: 0 1em 0 1em;
+  height: 80vh;
+  /* overflow-y:  scroll; */
+}
 #wrapper aside {
   background-color: #fff;
   flex: 1;
@@ -194,17 +201,42 @@ pre {
   color: #aaa;
 }
 
-form dl dt {
-  float: left;
+/* form dl dt{float:left;font-weight: bold;line-height: 1.5em;}
+form dl dd{margin-left:10em;line-height: 1.5em;margin-bottom: 1em}
+form dl dd textarea{width:40em;height: 15em;} */
+
+.modern-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
   font-weight: bold;
-  line-height: 1.5em;
 }
-form dl dd {
-  margin-left: 10em;
-  line-height: 1.5em;
-  margin-bottom: 1em;
+
+textarea {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
 }
-form dl dd textarea {
-  width: 40em;
-  height: 15em;
+
+.btn-submit {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
 }
