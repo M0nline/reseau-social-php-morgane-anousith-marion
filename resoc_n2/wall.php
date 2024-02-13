@@ -28,7 +28,7 @@ include_once('scripts/redir.php')
         <!-- fiche profil -->
         <aside>
             <?php
-            // on récupère le nom                
+            // on récupère les informations sur la propriétaire du mur          
             $laQuestionEnSql = "SELECT * FROM users WHERE id= '$userId' ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
             $user = $lesInformations->fetch_assoc();
@@ -43,15 +43,27 @@ include_once('scripts/redir.php')
                     // Vérifier si l'utilisateur consulte son propre mur
                     $isOwnWall = ($_GET['user_id'] == $_SESSION['connected_id']);
                     if (!$isOwnWall) {
+                        // récupérer l'id du user connecté
+                        $connected_user_id = $_SESSION['connected_id'];
+                        //vérifier s'il est dans la db followers
+                        $query_check_follow = "SELECT * FROM followers WHERE following_user_id = '$connected_user_id' AND followed_user_id = '$userId'";
+                        $result_check_follow = $mysqli->query($query_check_follow);
                         // Si ce n'est pas son propre mur, afficher le bouton d'abonnement
+                        if ($result_check_follow->num_rows == 0) {
+
                 ?>
-                        <form action='scripts/follow.php' method="post">
-                            <!-- Ajoutez ici les données supplémentaires nécessaires pour le script d'abonnement -->
-                            <input type="hidden" name="user_id_to_follow" value="<?php echo $userId; ?>">
-                            <button type="submit" class="btn-submit">Je m'abonne aux publications de <?php echo $user['alias'] ?></button>
-                        </form>
+                            <form action='scripts/follow.php' method="post">
+                                <!-- on récupère les données nécessaires pour le script d'abonnement -->
+                                <input type="hidden" name="user_id_to_follow" value="<?php echo $userId; ?>">
+                                <button type="submit" class="btn-submit">Je m'abonne aux publications de <?php echo $user['alias'] ?></button>
+                            </form>
                 <?php
+                        } else {
+                            // afficher un message
+                            echo "Vous suivez déjà les publications de " . $user['alias'];
+                        }
                     } else {
+                        // Sinon, afficher le bouton de post de message
                         include_once('scripts/post.php');
                     }
                 }
