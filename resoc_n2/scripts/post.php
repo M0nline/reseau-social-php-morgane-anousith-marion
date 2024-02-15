@@ -19,22 +19,7 @@
             // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
             $authorId = intval($mysqli->real_escape_string($authorId));
             $postContent = $mysqli->real_escape_string($postContent);
-            // construction de la requête
-            $lInstructionSql = "INSERT INTO posts "
-                . "(id, user_id, content, created, parent_id) "
-                . "VALUES (NULL, "
-                . $authorId . ", "
-                . "'" . $postContent . "', "
-                . "NOW(), "
-                . "NULL);";
-            // echo $lInstructionSql;
-            // execution
-            $ok = $mysqli->query($lInstructionSql);
-            if (!$ok) {
-                echo "Impossible d'ajouter le message: " . $mysqli->error;
-            } else {
-                echo "<p>Message posté !</p>";
-            }
+            include('post_insert.php');
         }
         ?>
         <form method="post" class="modern-form">

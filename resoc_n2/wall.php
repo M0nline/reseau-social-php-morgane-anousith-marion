@@ -77,7 +77,6 @@ include_once('scripts/redir.php')
         <!-- liste de posts -->
         <main>
             <?php
-
             $laQuestionEnSql = "
                     SELECT  posts.content,
                             posts.id as post_id, 
