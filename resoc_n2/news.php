@@ -22,7 +22,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </header>
     <div id="wrapper">
         <aside>
-            <img src="img/user.jpg" alt="Portrait de l'utilisatrice" />
+            <img src="img/news.jpeg" alt="Page de news" />
             <section>
                 <h3>Actualités</h3>
                 <p>Sur cette page, vous trouverez les 5 derniers messages publiés sur le site.</p>

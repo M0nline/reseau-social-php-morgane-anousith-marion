@@ -1,6 +1,6 @@
 body {
-  background-color: rgb(128, 128, 231);
-  font-family: Arial;
+  background-color: #FDC230;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
@@ -9,6 +9,8 @@ a {
 }
 a:hover {
   text-decoration: underline;
+  background-color: #99b;
+
 }
 
 body > header {
@@ -17,20 +19,29 @@ body > header {
   width: 80em;
   margin: 0 auto 2em auto;
   padding: 0;
+  border-radius: 10px; 
+  align-items: center;
+  
 }
 body > header img {
-  height: 5em;
-}
-body > header #menu {
-  display: flex;
-  width: 50%;
-  align-items: stretch;
-  border-left: 1px solid #99b;
+  height: 4em;
+  padding-left: 20px; 
+  padding-right: 20px;
 }
 body > header #menu a {
   flex: 1;
   text-align: center;
-  padding-top: 2em;
+  border-right: 1px solid #99b;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #333;
+  padding-left: 20px; 
+  padding-right: 20px; 
+}
+
+body > header #menu a {
+  flex: 1;
+  text-align: center;
   border-right: 1px solid #99b;
 }
 body > header a:hover {
@@ -43,6 +54,9 @@ body > header #user {
   margin-left: auto;
   flex: 0.2;
   border-left: 1px solid #99b;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #333;
 }
 body > header #user > a {
   display: block;
@@ -93,6 +107,8 @@ body > header #user:hover ul {
   display: block;
   width: 50%;
   margin: auto;
+  border-radius: 1em;
+
 }
 
 #wrapper main {
@@ -241,7 +257,7 @@ textarea {
 }
 
 .btn-submit {
-  background-color: #007bff;
+  background-color: #333;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -251,5 +267,5 @@ textarea {
 }
 
 .btn-submit:hover {
-  background-color: #0056b3;
+  background-color: #000;
 }

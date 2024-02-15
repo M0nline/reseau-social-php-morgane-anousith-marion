@@ -14,6 +14,7 @@ include_once('scripts/redir.php')
     <meta charset="utf-8">
     <title>ReSoC - Administration</title>
     <meta name="author" content="Julien Falconnet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css" />
 </head>
 

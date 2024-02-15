@@ -33,7 +33,7 @@ if (session_status() === PHP_SESSION_NONE) {
             $tag = $lesInformations->fetch_assoc();
             // echo "<pre>" . print_r($tag, 1) . "</pre>";
             ?>
-            <img src="img/user.jpg" alt="Portrait de l'utilisatrice" />
+            <img src="img/keywords.png" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Mots-clés</h3>
                 <p>Sur cette page, vous trouverez les derniers messages relevant du mot-clé <?php echo strtoupper($tag['label']) ?>
