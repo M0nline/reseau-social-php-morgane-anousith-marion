@@ -15,7 +15,7 @@ $connectedUserId = $isConnected ? $_SESSION['connected_id'] : '';
         <a href="login.php">Me connecter</a>
     </nav>
 <?php else :
-    echo "en session avec l'id:" . $_SESSION['connected_id'];
+    // echo "en session avec l'id:" . $_SESSION['connected_id'];
 ?>
     <a href='admin.php'><img src="img/resoc.jpg" alt="Logo de notre réseau social" /></a>
     <nav id="menu">
