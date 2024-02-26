@@ -11,7 +11,7 @@ This project involved refactoring the existing codebase of a social network plat
 
 ## Deployment
 
-GitHub : [https://github.com/adatechschool/reseau-social-php-morgane-anousith-marion]()
+Repo GitHub : [https://github.com/adatechschool/reseau-social-php-morgane-anousith-marion]()
 
 (TBC)
 
@@ -54,7 +54,7 @@ GitHub : [https://github.com/adatechschool/reseau-social-php-morgane-anousith-ma
 * [MAMP](https://www.mamp.info/en/mac/) - Local web development solution
 * [PHP 8](https://www.php.net/) - Scripting language
 * [mySQL](https://www.mysql.com/) - Relational database management system (RDBMS)
-* [phpMyAdmin] (https://www.phpmyadmin.net/) - mySQL administration tool
+* [phpMyAdmin](https://www.phpmyadmin.net/) - mySQL administration tool
 * [Visual Studio Code](https://code.visualstudio.com/) - IDE
 
 ## Collaboration
