@@ -1,19 +1,22 @@
 # GoldenYears (student exercise)
 
+![demo.png](screenshots/demo.png)
+
 A Tailored Social Network for Nursing Home Residents !
 
 This project involved refactoring the existing codebase of a social network platform built in PHP with the following objectives:
 
 - Debugging and fixing existing code issues
 - Enhancing the overall architecture for better scalability and maintainability
-- Completing unfinished features and adding missing functionalities"
+- Completing unfinished features and adding missing functionalities
 
 
 ## Deployment
 
+(local only)
+
 Repo GitHub : [https://github.com/adatechschool/reseau-social-php-morgane-anousith-marion]()
 
-(TBC)
 
 ## Features 
 
@@ -77,15 +80,41 @@ We utilized the following collaboration tools:
 - VSC LiveShare (VSC extension)
 - Git, GitHub
 
+## Screenshots
+### Logged out
+![screenshot](screenshots/screenshot_1.png)
+2 menu entries / 1 login button / no access to "like"
+
+### Login page
+![screenshot](screenshots/screenshot_2.png)
+
+### User's wall (when logged in)
+![screenshot](screenshots/screenshot_3.png)
+4 menu entries / Profil menu available / Ability to post a message / Access to "like" button
+
+### Followed user's wall
+![screenshot](screenshots/screenshot_4.png)
+Unfollow button / "like" button
+
+### Not followed user's wall
+![screenshot](screenshots/screenshot_5.png)
+Follow button / "like" button
+
+### Profil menu
+![screenshot](screenshots/screenshot_6.png)
+Access to : settings / folowers list  / following list / log out button
+
+### Adding #tags to post
+![screenshot](screenshots/screenshot_7.png)
+If tag do not already exist, it is created in "tags" table + post is added to "posts" table + post x tag is added to "posts_tags" table (atomic execution)
+
 
 ## Authors
 
 * **Morgane Le Moal** - [GitHub](https://github.com/M0nline)
 * **Marion Ochem** - [GitHub](https://github.com/MarionOchem)
 
-
-
 ## Dates
 
 * Exercise duration : 6 days
-* Exercise démo : 15 february 2024
+* Exercise demo : 15 february 2024
