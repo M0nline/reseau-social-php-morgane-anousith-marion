@@ -76,6 +76,7 @@ This approach allowed us to collaboratively navigate through intricate issues by
 
 We utilized the following collaboration tools:
 
+- Agile method
 - Notion (Kanban)
 - VSC LiveShare (VSC extension)
 - Git, GitHub
