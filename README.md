@@ -1,4 +1,4 @@
-# GoldenYears (student exercise)
+# GoldenYears - Social network (student exercise)
 
 ![demo.png](screenshots/demo.png)
 
