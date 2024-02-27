@@ -83,8 +83,6 @@ We utilized the following collaboration tools:
 * **Morgane Le Moal** - [GitHub](https://github.com/M0nline)
 * **Marion Ochem** - [GitHub](https://github.com/MarionOchem)
 
-
-
 ## Dates
 
 * Exercise duration : 6 days
